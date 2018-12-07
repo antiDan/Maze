@@ -3,7 +3,6 @@ using Microsoft.Win32;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
-using Point = Maze.Core.Objects.Point;
 
 namespace Maze.View
 {
@@ -13,24 +12,24 @@ namespace Maze.View
         {
             InitializeComponent();
 
-            this.CreateLevel();
+            //this.CreateLevel();
         }
 
         private void CreateLevel()
         {
-            var level = new Level
+            var level = new Core.Objects.Level
             {
                 Width = 3,
                 Height = 1,
                 Walls = new List<Wall>(),
                 Exit = new Wall
                 {
-                    Point1 = new Point
+                    Point1 = new Core.Objects.Point
                     {
                         X = 1,
                         Y = 1
                     },
-                    Point2 = new Point
+                    Point2 = new Core.Objects.Point
                     {
                         X = 1,
                         Y = 1
