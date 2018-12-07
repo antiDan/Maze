@@ -2,4 +2,7 @@
 # Diese .gitignore-Datei wurde von Microsoft(R) Visual Studio automatisch erstellt.
 ################################################################################
 
-/Maze.Core/obj/Debug
+/Maze.Core/obj
+/Maze.View/obj
+/Maze.View/bin
+/Maze.Core/bin
