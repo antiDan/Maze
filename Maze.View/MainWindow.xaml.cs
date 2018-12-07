@@ -1,28 +1,52 @@
-﻿using System;
+﻿using Maze.Core.Objects;
+using Microsoft.Win32;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Point = Maze.Core.Objects.Point;
 
 namespace Maze.View
 {
-    /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+
+            this.CreateLevel();
+        }
+
+        private void CreateLevel()
+        {
+            var level = new Level
+            {
+                Width = 3,
+                Height = 1,
+                Walls = new List<Wall>(),
+                Exit = new Wall
+                {
+                    Point1 = new Point
+                    {
+                        X = 1,
+                        Y = 1
+                    },
+                    Point2 = new Point
+                    {
+                        X = 1,
+                        Y = 1
+                    }
+                }
+            };
+
+            var json = level.ToJson();
+
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Maze Level|*.lvl";
+            saveFileDialog.Title = "Save Level";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, json);                
+            }
         }
     }
 }

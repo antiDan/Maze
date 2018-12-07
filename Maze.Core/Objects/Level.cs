@@ -10,7 +10,7 @@ namespace Maze.Core.Objects
 
         public int Height { get; set; }
 
-        public List<Wall> Walls { get; }
+        public List<Wall> Walls { get; set; }
 
         public Wall Exit { get; set; }
 
