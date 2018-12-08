@@ -86,7 +86,8 @@ namespace Maze.View.Game
 
         private void CreateRobot()
         {
-            this.CanvasObjects.Add(new Robot(this.level));
+            this.robot = new Robot(this.level);
+            this.CanvasObjects.Add(this.robot);
         }
     }
 }
