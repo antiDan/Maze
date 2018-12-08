@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Maze.View.Level
+namespace Maze.View.Game
 {
     public partial class LevelView : UserControl
     {

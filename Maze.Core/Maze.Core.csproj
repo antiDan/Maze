@@ -53,10 +53,9 @@
     <Compile Include="Objects\Wall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Levels\" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Levels\Level_1.lvl" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

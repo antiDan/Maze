@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using Maze.Core.Interfaces;
 using Newtonsoft.Json;
 
@@ -27,6 +28,12 @@ namespace Maze.Core.Objects
         public static Level FromJson(string json)
         {
             return JsonConvert.DeserializeObject<Level>(json);
+        }
+
+        public static Level FromFile(string path)
+        {
+            var json = File.ReadAllText(path);
+            return Level.FromJson(json);
         }
     }
 }
