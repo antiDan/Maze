@@ -1,8 +1,9 @@
 ﻿using Maze.Core.Objects;
+using Maze.View.Game;
 
-namespace Maze.View.Game
+namespace Maze.View.CanvasObjects
 {
-    public class Line
+    public class Line : CanvasObject
     {
         public Line(Wall wall)
         {
@@ -12,9 +13,11 @@ namespace Maze.View.Game
             this.Y2 = SizeConverter.Convert(wall.Point2.Y);
         }
 
-        public int X1 { get; }
-        public int Y1 { get; }
-        public int X2 { get; }
-        public int Y2 { get; }
+        public override string Type => nameof(Line);
+
+        public decimal X1 { get; }
+        public decimal Y1 { get; }
+        public decimal X2 { get; }
+        public decimal Y2 { get; }
     }
 }

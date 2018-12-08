@@ -1,6 +1,6 @@
 ﻿namespace Maze.Core.Interfaces
 {
-    public interface IRobot
+    public interface IRobotControl
     {
         void GoLeft();
         void GoUp();

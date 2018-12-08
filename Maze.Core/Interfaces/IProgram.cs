@@ -2,6 +2,6 @@
 {
     public interface IProgram
     {
-        void Program(IRobot robot);
+        void Program(IRobotControl robot);
     }
 }

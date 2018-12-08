@@ -1,1 +1,1 @@
-{"Width":3,"Height":1,"Walls":[],"Exit":{"Point1":{"X":3,"Y":0},"Point2":{"X":3,"Y":1}}}
+{"Width":3.0,"Height":1.0,"Walls":[],"Exit":{"Point1":{"X":3.0,"Y":0.0},"Point2":{"X":3.0,"Y":1.0}},"Robot":{"X":0.0,"Y":0.0}}

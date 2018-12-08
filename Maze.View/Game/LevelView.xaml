@@ -4,7 +4,7 @@
              Background="Black">
     <Grid>
 
-        <ItemsControl ItemsSource="{Binding Path=Items}">
+        <ItemsControl ItemsSource="{Binding Path=CanvasObjects}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas Width="{Binding LevelWidth}"
@@ -14,12 +14,43 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Line X1="{Binding X1}"
-                          Y1="{Binding Y1}"
-                          X2="{Binding X2}"
-                          Y2="{Binding Y2}"
-                          Stroke="DarkGray"
-                          StrokeThickness="3"/>
+                    <ContentControl Content="{Binding}">
+                        <ContentControl.Style>
+                            <Style TargetType="{x:Type ContentControl}">
+                                <Style.Triggers>
+
+                                    <DataTrigger Binding="{Binding Type}" Value="Line">
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <Line X1="{Binding X1}"
+                                                          Y1="{Binding Y1}"
+                                                          X2="{Binding X2}"
+                                                          Y2="{Binding Y2}"
+                                                          Stroke="DarkGray"
+                                                          StrokeThickness="3"/>
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+
+                                    <DataTrigger Binding="{Binding Type}" Value="Robot">
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <Ellipse Margin="{Binding Margin}"
+                                                             Width="80"
+                                                             Height="80"
+                                                             Fill="Red"  />
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

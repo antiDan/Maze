@@ -1,5 +1,5 @@
 ﻿using Maze.Core.Objects;
-using Prism.Commands;
+using Maze.View.CanvasObjects;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,14 +13,18 @@ namespace Maze.View.Game
         public LevelViewModel(Level level)
         {
             this.level = level;
+            this.CanvasObjects = new ObservableCollection<CanvasObject>();
 
             this.CalculateLevelSize();
-            this.CreateItems();
+            this.CreateWalls();
+            this.CreateRobot();
         }
 
-        public ObservableCollection<Line> Items { get; set; }
-        public int LevelWidth { get; set; }
-        public int LevelHeight { get; set; }
+        public ObservableCollection<CanvasObject> CanvasObjects { get; }
+        public decimal LevelWidth { get; set; }
+        public decimal LevelHeight { get; set; }
+        public decimal RobotX => this.level.Robot.X;
+        public decimal RobotY => this.level.Robot.Y;
 
         private void CalculateLevelSize()
         {
@@ -28,7 +32,7 @@ namespace Maze.View.Game
             this.LevelHeight = SizeConverter.Convert(this.level.Height);
         }
 
-        private void CreateItems()
+        private void CreateWalls()
         {
             var walls = this.level.Walls;
             for (var x = 0; x < this.level.Width; x++)
@@ -63,7 +67,12 @@ namespace Maze.View.Game
 
             walls.Remove(this.level.Exit);
 
-            this.Items = new ObservableCollection<Line>(walls.Select(w => new Line(w)));
+            this.CanvasObjects.AddRange(walls.Select(w => new Line(w)));
+        }
+
+        private void CreateRobot()
+        {
+            this.CanvasObjects.Add(new Robot(this.level));
         }
     }
 }

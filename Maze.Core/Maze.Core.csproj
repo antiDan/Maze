@@ -44,9 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IGame.cs" />
     <Compile Include="Interfaces\ILevel.cs" />
     <Compile Include="Interfaces\IProgram.cs" />
-    <Compile Include="Interfaces\IRobot.cs" />
+    <Compile Include="Interfaces\IRobotControl.cs" />
     <Compile Include="Interfaces\IWall.cs" />
     <Compile Include="LevelEditor\Editor.cs" />
     <Compile Include="Objects\Level.cs" />

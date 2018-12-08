@@ -80,11 +80,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CanvasObjects\CanvasObject.cs" />
+    <Compile Include="CanvasObjects\Robot.cs" />
     <Compile Include="Game\LevelView.xaml.cs">
       <DependentUpon>LevelView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\LevelViewModel.cs" />
-    <Compile Include="Game\Line.cs" />
+    <Compile Include="CanvasObjects\Line.cs" />
     <Compile Include="Game\SizeConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

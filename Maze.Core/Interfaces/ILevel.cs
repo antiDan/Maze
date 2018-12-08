@@ -4,8 +4,8 @@ namespace Maze.Core.Interfaces
 {
     public interface ILevel
     {
-        int Width { get; }
-        int Height { get; }
+        decimal Width { get; }
+        decimal Height { get; }
         //List<IWall> Walls { get; }
     }
 }

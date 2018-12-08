@@ -55,7 +55,8 @@ namespace Maze.View
                 {
                     Point1 = new Point(3, 0),
                     Point2 = new Point(3, 1)
-                }
+                },
+                Robot = new Point(0, 0)
             };
 
             var json = level.ToJson();
