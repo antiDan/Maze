@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using Maze.Core.Interfaces;
 using Newtonsoft.Json;
 
@@ -33,24 +35,28 @@ namespace Maze.Core.Objects
         {
             this.Robot.X--;
             this.RaiseRobotChanged();
+            this.Wait();
         }
 
         public void GoUp()
         {
             this.Robot.Y--;
             this.RaiseRobotChanged();
+            this.Wait();
         }
 
         public void GoRight()
         {
             this.Robot.X++;
             this.RaiseRobotChanged();
+            this.Wait();
         }
 
         public void GoDown()
         {
             this.Robot.Y++;
             this.RaiseRobotChanged();
+            this.Wait();
         }
 
         public event Action RobotChanged;
@@ -80,6 +86,33 @@ namespace Maze.Core.Objects
             return Level.FromJson(json);
         }
 
+        public static string GetLevelsPath()
+        {
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            var directoryInfo = Directory.GetParent(path);
+
+            while (directoryInfo.Name != "Maze")
+            {
+                directoryInfo = directoryInfo.Parent;
+            }
+
+            return Path.Combine(directoryInfo.FullName, @"Maze.Core\Levels");
+        }
+
         #endregion Save/Load File
+
+        public void Run(IProgram program)
+        {
+            Task.Factory.StartNew(() =>
+            {
+                this.Wait();
+                program.Program(this);
+            });
+        }
+
+        private void Wait()
+        {
+            Thread.Sleep(500);
+        }
     }
 }

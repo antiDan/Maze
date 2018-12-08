@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using Point = Maze.Core.Objects.Point;
 
 namespace Maze.View
@@ -16,32 +17,15 @@ namespace Maze.View
 
             //this.CreateLevel();
 
-            var levelsPath = this.GetLevelsPath();
-            var levelPath = Path.Combine(levelsPath, "Level_1.lvl");
-            var level = Level.FromFile(levelPath);
-            var levelView = this.CreateLevelView(level);
-            this.Content = levelView;
+            this.Content = this.CreateGameView();
         }
 
-        private LevelView CreateLevelView(Level level)
+        private UserControl CreateGameView()
         {
-            var viewModel = new LevelViewModel(level);
-            var view = new LevelView();
+            var viewModel = new GameViewModel();
+            var view = new GameView();
             view.DataContext = viewModel;
             return view;
-        }
-
-        private string GetLevelsPath()
-        {
-            var path = System.AppDomain.CurrentDomain.BaseDirectory;
-            var directoryInfo = Directory.GetParent(path);
-
-            while (directoryInfo.Name != "Maze")
-            {
-                directoryInfo = directoryInfo.Parent;
-            }
-            
-            return Path.Combine(directoryInfo.FullName, @"Maze.Core\Levels");
         }
 
         private void CreateLevel()

@@ -18,22 +18,15 @@ namespace Maze.View.Game
             this.level = level;
             this.level.RobotChanged += OnRobotChanged;
             this.CanvasObjects = new ObservableCollection<CanvasObject>();
-            this.GoCommand = new DelegateCommand(this.Go);
 
             this.CalculateLevelSize();
             this.CreateWalls();
             this.CreateRobot();
         }
 
-        public DelegateCommand GoCommand { get; }
         public ObservableCollection<CanvasObject> CanvasObjects { get; }
         public decimal LevelWidth { get; set; }
         public decimal LevelHeight { get; set; }
-
-        private void Go()
-        {
-            this.level.GoRight();            
-        }
 
         private void OnRobotChanged()
         {
