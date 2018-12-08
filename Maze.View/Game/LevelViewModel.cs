@@ -13,10 +13,20 @@ namespace Maze.View.Game
         public LevelViewModel(Level level)
         {
             this.level = level;
+
+            this.CalculateLevelSize();
             this.CreateItems();
         }
 
         public ObservableCollection<Line> Items { get; set; }
+        public int LevelWidth { get; set; }
+        public int LevelHeight { get; set; }
+
+        private void CalculateLevelSize()
+        {
+            this.LevelWidth = SizeConverter.Convert(this.level.Width);
+            this.LevelHeight = SizeConverter.Convert(this.level.Height);
+        }
 
         private void CreateItems()
         {
