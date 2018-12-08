@@ -20,5 +20,10 @@ namespace Maze.View.CanvasObjects
             (double)SizeConverter.Convert(this.level.Robot.Y + 0.1m),
             0,
             0);
+
+        public void Refresh()
+        {
+            this.RaisePropertyChanged(nameof(this.Margin));
+        }
     }
 }

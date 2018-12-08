@@ -54,6 +54,12 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        
+
+        <Button HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                
+                Content="GO!"
+                Command="{Binding GoCommand}"/>
+
     </Grid>
 </UserControl>

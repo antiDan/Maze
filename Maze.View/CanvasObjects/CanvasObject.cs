@@ -1,6 +1,8 @@
-﻿namespace Maze.View.CanvasObjects
+﻿using Prism.Mvvm;
+
+namespace Maze.View.CanvasObjects
 {
-    public abstract class CanvasObject
+    public abstract class CanvasObject : BindableBase
     {
         public abstract string Type { get; }
     }

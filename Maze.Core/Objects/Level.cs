@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Maze.Core.Interfaces;
 using Newtonsoft.Json;
@@ -30,22 +31,33 @@ namespace Maze.Core.Objects
 
         public void GoLeft()
         {
-            throw new System.NotImplementedException();
+            this.Robot.X--;
+            this.RaiseRobotChanged();
         }
 
         public void GoUp()
         {
-            throw new System.NotImplementedException();
+            this.Robot.Y--;
+            this.RaiseRobotChanged();
         }
 
         public void GoRight()
         {
-            throw new System.NotImplementedException();
+            this.Robot.X++;
+            this.RaiseRobotChanged();
         }
 
         public void GoDown()
         {
-            throw new System.NotImplementedException();
+            this.Robot.Y++;
+            this.RaiseRobotChanged();
+        }
+
+        public event Action RobotChanged;
+
+        private void RaiseRobotChanged()
+        {
+            this.RobotChanged?.Invoke();
         }
 
         #endregion IRobotControl

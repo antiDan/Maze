@@ -1,6 +1,8 @@
 ﻿using Maze.Core.Objects;
 using Maze.View.CanvasObjects;
+using Prism.Commands;
 using Prism.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -9,22 +11,34 @@ namespace Maze.View.Game
     public class LevelViewModel : BindableBase
     {
         private Level level;
+        private Robot robot;
 
         public LevelViewModel(Level level)
         {
             this.level = level;
+            this.level.RobotChanged += OnRobotChanged;
             this.CanvasObjects = new ObservableCollection<CanvasObject>();
+            this.GoCommand = new DelegateCommand(this.Go);
 
             this.CalculateLevelSize();
             this.CreateWalls();
             this.CreateRobot();
         }
 
+        public DelegateCommand GoCommand { get; }
         public ObservableCollection<CanvasObject> CanvasObjects { get; }
         public decimal LevelWidth { get; set; }
         public decimal LevelHeight { get; set; }
-        public decimal RobotX => this.level.Robot.X;
-        public decimal RobotY => this.level.Robot.Y;
+
+        private void Go()
+        {
+            this.level.GoRight();            
+        }
+
+        private void OnRobotChanged()
+        {
+            this.robot.Refresh();
+        }
 
         private void CalculateLevelSize()
         {
