@@ -7,5 +7,5 @@
 /Maze.View/bin
 /Maze.Core/bin
 *.user
-/RobotPrograms/obj
-/RobotPrograms/bin
+/Maze.RobotPrograms/obj
+/Maze.RobotPrograms/bin
