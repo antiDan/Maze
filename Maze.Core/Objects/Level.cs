@@ -192,6 +192,7 @@ namespace Maze.Core.Objects
                     {
                         (program as IInfoLevelProgram).Program(this);
                     }
+                    throw new Exception("Das Program ist beendet, der Roboter ist noch im Labyrinth :(");
                 }
                 catch (Exception e)
                 {
