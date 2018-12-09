@@ -73,6 +73,7 @@ namespace Maze.Core.Objects
             {
                 this.Fail();
             }
+            this.CheckWin();
             this.Wait();
         }
 
@@ -84,6 +85,7 @@ namespace Maze.Core.Objects
             {
                 this.Fail();
             }
+            this.CheckWin();
             this.Wait();
         }
 
@@ -95,6 +97,7 @@ namespace Maze.Core.Objects
             {
                 this.Fail();
             }
+            this.CheckWin();
             this.Wait();
         }
 
@@ -106,12 +109,30 @@ namespace Maze.Core.Objects
             {
                 this.Fail();
             }
+            this.CheckWin();
             this.Wait();
         }
 
-        public void Fail()
+        private void Fail()
         {
             throw new Exception("FEHLER !!!");
+        }
+
+        private void CheckWin()
+        {
+            if (this.IsWin())
+            {
+                throw new Exception("Gewonnen! :)");
+            }
+        }
+
+        private bool IsWin()
+        {
+            return
+                this.Robot.X < 0 ||
+                this.Robot.Y < 0 ||
+                this.Robot.X >= this.Width ||
+                this.Robot.Y >= this.Height;
         }
 
         public event Action RobotChanged;
