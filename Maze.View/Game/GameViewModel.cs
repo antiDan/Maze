@@ -107,15 +107,15 @@ namespace Maze.View.Game
             return level;
         }
 
-        private IProgram LoadProgram(string name)
+        private IProgramBase LoadProgram(string name)
         {
             var dllPath = this.GetProgramDllPath();
             var assembly = Assembly.LoadFile(dllPath);
 
-            var interfaceType = typeof(IProgram);
+            var interfaceType = typeof(IProgramBase);
             var programType = assembly.GetTypes().Single(type => interfaceType.IsAssignableFrom(type) && type.Name == name);
 
-            return (IProgram)Activator.CreateInstance(programType);
+            return (IProgramBase)Activator.CreateInstance(programType);
         }
 
         private void Refresh()
@@ -139,7 +139,7 @@ namespace Maze.View.Game
             var dllPath = this.GetProgramDllPath();
             var assembly = Assembly.LoadFile(dllPath);
 
-            var interfaceType = typeof(IProgram);
+            var interfaceType = typeof(IProgramBase);
             var programTypes = assembly.GetTypes()
                 .Where(type => interfaceType.IsAssignableFrom(type))
                 .OrderBy(type => type.Name)

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\IGame.cs" />
     <Compile Include="Interfaces\ILevel.cs" />
+    <Compile Include="Interfaces\ILevelInfo.cs" />
     <Compile Include="Interfaces\IProgram.cs" />
     <Compile Include="Interfaces\IRobotControl.cs" />
     <Compile Include="Interfaces\IWall.cs" />
@@ -59,6 +60,8 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="Levels\Level_3_1.lvl" />
+    <None Include="Levels\Level_5_2.lvl" />
+    <None Include="Levels\Level_5_1.lvl" />
     <None Include="Levels\Level_4.lvl" />
     <None Include="Levels\Level_3_2.lvl" />
     <None Include="Levels\Level_2.lvl" />

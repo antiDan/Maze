@@ -3,7 +3,7 @@
     interface IGame
     {
         ILevel Level { get; }
-        IProgram Program { get; }
+        IProgramBase Program { get; }
         void Start();
     }
 }

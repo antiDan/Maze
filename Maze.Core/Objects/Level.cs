@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace Maze.Core.Objects
 {
-    public class Level : ILevel, IRobotControl
+    public class Level : ILevel, ILevelInfo
     {
         public Level()
         {
@@ -156,14 +156,21 @@ namespace Maze.Core.Objects
 
         #endregion Save/Load File
 
-        public void Run(IProgram program)
+        public void Run(IProgramBase program)
         {
             Task.Factory.StartNew(() =>
             {
                 this.Wait();
                 try
                 {
-                    program.Program(this);
+                    if (program is IProgram)
+                    {
+                        (program as IProgram).Program(this);
+                    }
+                    else if(program is IInfoLevelProgram)
+                    {
+                        (program as IInfoLevelProgram).Program(this);
+                    }
                 }
                 catch (Exception e)
                 {
