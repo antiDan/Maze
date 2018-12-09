@@ -2,7 +2,7 @@
 
 namespace Maze.RobotPrograms.Test
 {
-    public class TestProgram : IProgram
+    public class TestProgram1 : IProgram
     {
         public void Program(IRobotControl robot)
         {
