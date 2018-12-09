@@ -115,7 +115,7 @@ namespace Maze.Core.Objects
 
         private void Fail()
         {
-            throw new Exception("FEHLER !!!");
+            throw new Exception("Der Roboter kann nicht durch die Wand :(");
         }
 
         private void CheckWin()
