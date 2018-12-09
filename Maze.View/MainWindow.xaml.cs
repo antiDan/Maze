@@ -36,10 +36,10 @@ namespace Maze.View
                 Height = 1,
                 Walls = new List<Wall>(),
                 Exit = new Wall
-                {
-                    Point1 = new Point(3, 0),
-                    Point2 = new Point(3, 1)
-                },
+                (
+                    new Point(3, 0),
+                    new Point(3, 1)
+                ),
                 Robot = new Point(0, 0)
             };
 

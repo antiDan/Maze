@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using Maze.Core.Interfaces;
 using Newtonsoft.Json;
 
@@ -31,10 +32,47 @@ namespace Maze.Core.Objects
 
         #region IRobotControl
 
+        private bool IsWall(Point point1, Point point2)
+        {
+            return this.Walls.Contains(new Wall(point1, point2));
+        }
+
+        public bool IsLeftWall()
+        {
+            return this.IsWall(
+                new Point(this.Robot.X, this.Robot.Y),
+                new Point(this.Robot.X, this.Robot.Y + 1));
+        }
+
+        public bool IsUpWall()
+        {
+            return this.IsWall(
+                new Point(this.Robot.X, this.Robot.Y),
+                new Point(this.Robot.X + 1, this.Robot.Y));
+        }
+
+        public bool IsRightWall()
+        {
+            return this.IsWall(
+                new Point(this.Robot.X + 1, this.Robot.Y),
+                new Point(this.Robot.X + 1, this.Robot.Y + 1));
+        }
+
+        public bool IsDownWall()
+        {
+            return this.IsWall(
+                new Point(this.Robot.X, this.Robot.Y + 1),
+                new Point(this.Robot.X + 1, this.Robot.Y + 1));
+        }
+
         public void GoLeft()
         {
             this.Robot.X--;
             this.RaiseRobotChanged();
+            if (this.IsRightWall())
+            {
+                this.Fail();
+            }
             this.Wait();
         }
 
@@ -42,6 +80,10 @@ namespace Maze.Core.Objects
         {
             this.Robot.Y--;
             this.RaiseRobotChanged();
+            if (this.IsDownWall())
+            {
+                this.Fail();
+            }
             this.Wait();
         }
 
@@ -49,6 +91,10 @@ namespace Maze.Core.Objects
         {
             this.Robot.X++;
             this.RaiseRobotChanged();
+            if (this.IsLeftWall())
+            {
+                this.Fail();
+            }
             this.Wait();
         }
 
@@ -56,7 +102,16 @@ namespace Maze.Core.Objects
         {
             this.Robot.Y++;
             this.RaiseRobotChanged();
+            if (this.IsUpWall())
+            {
+                this.Fail();
+            }
             this.Wait();
+        }
+
+        public void Fail()
+        {
+            throw new Exception("FEHLER !!!");
         }
 
         public event Action RobotChanged;
@@ -106,7 +161,14 @@ namespace Maze.Core.Objects
             Task.Factory.StartNew(() =>
             {
                 this.Wait();
-                program.Program(this);
+                try
+                {
+                    program.Program(this);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);                                       
+                }
             });
         }
 

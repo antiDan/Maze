@@ -140,7 +140,10 @@ namespace Maze.View.Game
             var assembly = Assembly.LoadFile(dllPath);
 
             var interfaceType = typeof(IProgram);
-            var programTypes = assembly.GetTypes().Where(type => interfaceType.IsAssignableFrom(type)).ToList();
+            var programTypes = assembly.GetTypes()
+                .Where(type => interfaceType.IsAssignableFrom(type))
+                .OrderBy(type => type.Name)
+                .ToList();
 
             this.Programs.Clear();
             this.Programs.AddRange(programTypes.Select(t => t.Name));

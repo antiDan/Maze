@@ -45,31 +45,31 @@ namespace Maze.View.Game
             for (var x = 0; x < this.level.Width; x++)
             {
                 walls.Add(new Wall
-                {
-                    Point1 = new Point(x, 0),
-                    Point2 = new Point(x + 1, 0)
-                });
+                (
+                    new Point(x, 0),
+                    new Point(x + 1, 0)
+                ));
 
                 walls.Add(new Wall
-                {
-                    Point1 = new Point(x, this.level.Height),
-                    Point2 = new Point(x + 1, this.level.Height)
-                });
+                (
+                    new Point(x, this.level.Height),
+                    new Point(x + 1, this.level.Height)
+                ));
             }
 
             for (var y = 0; y < this.level.Height; y++)
             {
                 walls.Add(new Wall
-                {
-                    Point1 = new Point(0, y),
-                    Point2 = new Point(0, y + 1)
-                });
+                (
+                    new Point(0, y),
+                    new Point(0, y + 1)
+                ));
 
                 walls.Add(new Wall
-                {
-                    Point1 = new Point(this.level.Width, y),
-                    Point2 = new Point(this.level.Width, y + 1)
-                });
+                (
+                    new Point(this.level.Width, y),
+                    new Point(this.level.Width, y + 1)
+                ));
             }
 
             walls.Remove(this.level.Exit);
