@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maxim\MeinErstesProgramm.cs" />
     <Compile Include="Test\TestProgram5.cs" />
     <Compile Include="Test\TestProgram4.cs" />
     <Compile Include="Test\TestProgram1.cs" />
