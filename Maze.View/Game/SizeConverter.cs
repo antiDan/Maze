@@ -2,9 +2,9 @@
 {
     public static class SizeConverter
     {
-        private const decimal Factor = 100;
+        private const double Factor = 100;
 
-        public static decimal Convert(decimal value)
+        public static double Convert(double value)
         {
             return value * SizeConverter.Factor;
         }

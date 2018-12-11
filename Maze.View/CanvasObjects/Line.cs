@@ -15,9 +15,9 @@ namespace Maze.View.CanvasObjects
 
         public override string Type => nameof(Line);
 
-        public decimal X1 { get; }
-        public decimal Y1 { get; }
-        public decimal X2 { get; }
-        public decimal Y2 { get; }
+        public double X1 { get; }
+        public double Y1 { get; }
+        public double X2 { get; }
+        public double Y2 { get; }
     }
 }

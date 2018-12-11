@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using Point = Maze.Core.Objects.Point;
 
 namespace Maze.View
 {

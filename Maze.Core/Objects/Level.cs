@@ -18,9 +18,9 @@ namespace Maze.Core.Objects
 
         #region ILevel
 
-        public decimal Width { get; set; }
+        public double Width { get; set; }
 
-        public decimal Height { get; set; }
+        public double Height { get; set; }
 
         public List<Wall> Walls { get; set; }
 
@@ -67,7 +67,7 @@ namespace Maze.Core.Objects
 
         public void GoLeft()
         {
-            this.Robot.X--;
+            this.Robot -= new Vector(1, 0);
             this.RaiseRobotChanged();
             if (this.IsRightWall())
             {
@@ -79,7 +79,7 @@ namespace Maze.Core.Objects
 
         public void GoUp()
         {
-            this.Robot.Y--;
+            this.Robot -= new Vector(0, 1);
             this.RaiseRobotChanged();
             if (this.IsDownWall())
             {
@@ -91,7 +91,7 @@ namespace Maze.Core.Objects
 
         public void GoRight()
         {
-            this.Robot.X++;
+            this.Robot += new Vector(1, 0);
             this.RaiseRobotChanged();
             if (this.IsLeftWall())
             {
@@ -103,7 +103,7 @@ namespace Maze.Core.Objects
 
         public void GoDown()
         {
-            this.Robot.Y++;
+            this.Robot += new Vector(0, 1);
             this.RaiseRobotChanged();
             if (this.IsUpWall())
             {

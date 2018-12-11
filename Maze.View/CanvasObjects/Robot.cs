@@ -16,8 +16,8 @@ namespace Maze.View.CanvasObjects
         public override string Type => nameof(Robot);
 
         public Thickness Margin => new Thickness(
-            (double)SizeConverter.Convert(this.level.Robot.X + 0.1m),
-            (double)SizeConverter.Convert(this.level.Robot.Y + 0.1m),
+            SizeConverter.Convert(this.level.Robot.X + 0.1),
+            SizeConverter.Convert(this.level.Robot.Y + 0.1),
             0,
             0);
 

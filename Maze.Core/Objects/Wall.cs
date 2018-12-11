@@ -1,4 +1,5 @@
 ﻿using Maze.Core.Interfaces;
+using System.Windows;
 
 namespace Maze.Core.Objects
 {
@@ -33,5 +34,5 @@ namespace Maze.Core.Objects
         {
             return $"{this.Point1.ToString()} => {this.Point2.ToString()}";
         }
-    }
+    } 
 }

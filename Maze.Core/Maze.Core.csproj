@@ -43,6 +43,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IGame.cs" />
@@ -53,7 +54,6 @@
     <Compile Include="Interfaces\IWall.cs" />
     <Compile Include="LevelEditor\Editor.cs" />
     <Compile Include="Objects\Level.cs" />
-    <Compile Include="Objects\Point.cs" />
     <Compile Include="Objects\Wall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

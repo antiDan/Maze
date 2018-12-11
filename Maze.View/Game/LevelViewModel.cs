@@ -5,6 +5,7 @@ using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace Maze.View.Game
 {
@@ -25,8 +26,8 @@ namespace Maze.View.Game
         }
 
         public ObservableCollection<CanvasObject> CanvasObjects { get; }
-        public decimal LevelWidth { get; set; }
-        public decimal LevelHeight { get; set; }
+        public double LevelWidth { get; set; }
+        public double LevelHeight { get; set; }
 
         private void OnRobotChanged()
         {
