@@ -7,10 +7,10 @@ namespace Maze.View.CanvasObjects
     {
         public Line(Wall wall)
         {
-            this.X1 = SizeConverter.Convert(wall.Point1.X);
-            this.Y1 = SizeConverter.Convert(wall.Point1.Y);
-            this.X2 = SizeConverter.Convert(wall.Point2.X);
-            this.Y2 = SizeConverter.Convert(wall.Point2.Y);
+            this.X1 = SizeConverter.LevelToView(wall.Point1.X);
+            this.Y1 = SizeConverter.LevelToView(wall.Point1.Y);
+            this.X2 = SizeConverter.LevelToView(wall.Point2.X);
+            this.Y2 = SizeConverter.LevelToView(wall.Point2.Y);
         }
 
         public override string Type => nameof(Line);

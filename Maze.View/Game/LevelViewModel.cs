@@ -2,10 +2,8 @@
 using Maze.View.CanvasObjects;
 using Prism.Commands;
 using Prism.Mvvm;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 
 namespace Maze.View.Game
 {
@@ -13,18 +11,19 @@ namespace Maze.View.Game
     {
         private Level level;
         private Robot robot;
+        private bool isEditorActive;
 
-        public LevelViewModel(Level level)
+        public LevelViewModel(Level level, bool isEditorActive)
         {
+            this.isEditorActive = isEditorActive;
             this.level = level;
             this.level.RobotChanged += OnRobotChanged;
+            this.ToggleWallCommand = new DelegateCommand<Wall>(this.ToggleWall, this.CanExecuteToggleWall);
             this.CanvasObjects = new ObservableCollection<CanvasObject>();
-
-            this.CalculateLevelSize();
-            this.CreateWalls();
-            this.CreateRobot();
+            this.ShowLevel();
         }
 
+        public DelegateCommand<Wall> ToggleWallCommand { get; }
         public ObservableCollection<CanvasObject> CanvasObjects { get; }
         public double LevelWidth { get; set; }
         public double LevelHeight { get; set; }
@@ -34,54 +33,38 @@ namespace Maze.View.Game
             this.robot.Refresh();
         }
 
-        private void CalculateLevelSize()
+        private void ShowLevel()
         {
-            this.LevelWidth = SizeConverter.Convert(this.level.Width);
-            this.LevelHeight = SizeConverter.Convert(this.level.Height);
+            // Size
+            this.LevelWidth = SizeConverter.LevelToView(this.level.Width);
+            this.LevelHeight = SizeConverter.LevelToView(this.level.Height);
+
+            // Clear
+            this.CanvasObjects.Clear();
+
+            // Walls
+            this.CanvasObjects.AddRange(this.level.Walls.Select(w => new Line(w)));
+
+            // Robot
+            this.CanvasObjects.Add(new Robot(this.level));
+        }
+               
+        private bool CanExecuteToggleWall(Wall wall)
+        {
+            return this.isEditorActive;
         }
 
-        private void CreateWalls()
+        private void ToggleWall(Wall wall)
         {
-            var walls = this.level.Walls;
-            for (var x = 0; x < this.level.Width; x++)
+            if (this.level.Walls.Contains(wall))
             {
-                walls.Add(new Wall
-                (
-                    new Point(x, 0),
-                    new Point(x + 1, 0)
-                ));
-
-                walls.Add(new Wall
-                (
-                    new Point(x, this.level.Height),
-                    new Point(x + 1, this.level.Height)
-                ));
+                this.level.Walls.Remove(wall);
             }
-
-            for (var y = 0; y < this.level.Height; y++)
+            else
             {
-                walls.Add(new Wall
-                (
-                    new Point(0, y),
-                    new Point(0, y + 1)
-                ));
-
-                walls.Add(new Wall
-                (
-                    new Point(this.level.Width, y),
-                    new Point(this.level.Width, y + 1)
-                ));
+                this.level.Walls.Add(wall);
             }
-
-            walls.Remove(this.level.Exit);
-
-            this.CanvasObjects.AddRange(walls.Select(w => new Line(w)));
-        }
-
-        private void CreateRobot()
-        {
-            this.robot = new Robot(this.level);
-            this.CanvasObjects.Add(this.robot);
+            this.ShowLevel();
         }
     }
 }

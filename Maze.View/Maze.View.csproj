@@ -86,6 +86,7 @@
     </Compile>
     <Compile Include="CanvasObjects\CanvasObject.cs" />
     <Compile Include="CanvasObjects\Robot.cs" />
+    <Compile Include="Game\EditorBehavior.cs" />
     <Compile Include="Game\LevelView.xaml.cs">
       <DependentUpon>LevelView.xaml</DependentUpon>
     </Compile>

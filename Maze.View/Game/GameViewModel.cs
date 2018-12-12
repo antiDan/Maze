@@ -98,7 +98,7 @@ namespace Maze.View.Game
 
             var level = Level.FromFile(this.SelectedLevel);
 
-            var viewModel = new LevelViewModel(level);
+            var viewModel = new LevelViewModel(level, true);
             var view = new LevelView();
             view.DataContext = viewModel;
 
