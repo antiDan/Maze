@@ -1,4 +1,1 @@
-{"Width":3.0,"Height":1.0,
-"Walls":[],
-"Exit":{"Point1":"3,0","Point2":"3,1"},
-"Robot":"0,0"}
+{"Width":3.0,"Height":1.0,"Walls":[{"Point1":"0,0","Point2":"0,1"},{"Point1":"0,1","Point2":"1,1"},{"Point1":"1,1","Point2":"2,1"},{"Point1":"0,0","Point2":"1,0"},{"Point1":"1,0","Point2":"2,0"},{"Point1":"2,0","Point2":"3,0"},{"Point1":"2,1","Point2":"3,1"}],"Exit":{"Point1":"3,0","Point2":"3,1"},"Robot":"0,0"}

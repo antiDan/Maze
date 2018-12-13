@@ -1,5 +1,1 @@
-{"Width":6.0,"Height":4.0,"Walls":[
-{"Point1":"2,0","Point2":"2,2"},
-{"Point1":"2,2","Point2":"4,2"},
-{"Point1":"4,2","Point2":"4,0"}
-],"Exit":{"Point1":"6,0","Point2":"6,1"},"Robot":"0,0"}
+{"Width":6.0,"Height":4.0,"Walls":[{"Point1":"2,0","Point2":"2,2"},{"Point1":"2,2","Point2":"4,2"},{"Point1":"4,2","Point2":"4,0"},{"Point1":"1,0","Point2":"2,0"},{"Point1":"1,0","Point2":"0,0"},{"Point1":"0,0","Point2":"0,1"},{"Point1":"0,1","Point2":"0,2"},{"Point1":"0,2","Point2":"0,3"},{"Point1":"0,3","Point2":"0,4"},{"Point1":"1,4","Point2":"0,4"},{"Point1":"2,4","Point2":"1,4"},{"Point1":"3,4","Point2":"2,4"},{"Point1":"4,4","Point2":"3,4"},{"Point1":"4,4","Point2":"5,4"},{"Point1":"5,4","Point2":"6,4"},{"Point1":"6,3","Point2":"6,4"},{"Point1":"6,3","Point2":"6,2"},{"Point1":"6,2","Point2":"6,1"},{"Point1":"4,0","Point2":"5,0"},{"Point1":"5,0","Point2":"6,0"}],"Exit":{"Point1":"6,0","Point2":"6,1"},"Robot":"0,0"}
