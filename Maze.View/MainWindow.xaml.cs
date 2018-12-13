@@ -1,8 +1,6 @@
 ﻿using Maze.Core.Objects;
 using Maze.View.Game;
-using Microsoft.Win32;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -42,15 +40,7 @@ namespace Maze.View
                 Robot = new Point(0, 0)
             };
 
-            var json = level.ToJson();
-
-            var saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Maze Level|*.lvl";
-            saveFileDialog.Title = "Save Level";
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                File.WriteAllText(saveFileDialog.FileName, json);                
-            }
+            level.SaveToFile();
         }
     }
 }

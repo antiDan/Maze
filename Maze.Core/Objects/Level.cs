@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Maze.Core.Interfaces;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 
 namespace Maze.Core.Objects
@@ -149,6 +150,19 @@ namespace Maze.Core.Objects
         public string ToJson()
         {
             return JsonConvert.SerializeObject(this);
+        }
+
+        public void SaveToFile()
+        {
+            var json = this.ToJson();
+
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Maze Level|*.lvl";
+            saveFileDialog.Title = "Save Level";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, json);
+            }
         }
 
         public static Level FromJson(string json)
