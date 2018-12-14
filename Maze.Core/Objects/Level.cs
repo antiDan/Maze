@@ -17,6 +17,8 @@ namespace Maze.Core.Objects
 
         }
 
+        public int Timeout { get; set; }
+
         #region ILevel
 
         public double Width { get; set; }
@@ -217,7 +219,7 @@ namespace Maze.Core.Objects
 
         private void Wait()
         {
-            Thread.Sleep(500);
+            Thread.Sleep(this.Timeout);
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public static class SizeConverter
     {
-        private const double Factor = 100;
+        public static double Factor { get; set; }
 
         public static double LevelToView(double value)
         {

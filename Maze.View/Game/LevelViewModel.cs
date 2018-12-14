@@ -25,6 +25,9 @@ namespace Maze.View.Game
             this.DeleteLevelCommand = new DelegateCommand(this.DeleteLevel);
 
             this.CanvasObjects = new ObservableCollection<CanvasObject>();
+
+            this.Timeout = 500;
+            this.Size = 100;
             this.ShowLevel();
         }
 
@@ -38,6 +41,33 @@ namespace Maze.View.Game
             {
                 this.isEditorActive = value;
                 this.RaisePropertyChanged();
+            }
+        }
+
+        public int Timeout
+        {
+            get
+            {
+                return this.level.Timeout;
+            }
+            set
+            {
+                this.level.Timeout = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public double Size
+        {
+            get
+            {
+                return SizeConverter.Factor;
+            }
+            set
+            {
+                SizeConverter.Factor = value;
+                this.RaisePropertyChanged();                
+                this.ShowLevel();
             }
         }
 

@@ -21,6 +21,8 @@ namespace Maze.View.CanvasObjects
             0,
             0);
 
+        public double Size => SizeConverter.Factor * 0.8;
+
         public void Refresh()
         {
             this.RaisePropertyChanged(nameof(this.Margin));
