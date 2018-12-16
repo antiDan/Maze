@@ -46,6 +46,7 @@
     <Compile Include="Test\TestProgram4.cs" />
     <Compile Include="Test\TestProgram1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\UniProgram.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maze.Core\Maze.Core.csproj">
