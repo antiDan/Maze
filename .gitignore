@@ -9,3 +9,4 @@
 *.user
 /Maze.RobotPrograms/obj
 /Maze.RobotPrograms/bin
+*.suo
