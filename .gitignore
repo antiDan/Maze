@@ -10,3 +10,4 @@
 /Maze.RobotPrograms/obj
 /Maze.RobotPrograms/bin
 *.suo
+/packages
