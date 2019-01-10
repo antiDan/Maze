@@ -1,9 +1,8 @@
-﻿using Maze.Core.Interfaces;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Maze.Core.Objects
 {
-    public class Wall : IWall
+    public class Wall
     {
         public Point Point1 { get; set; }
         public Point Point2 { get; set; }

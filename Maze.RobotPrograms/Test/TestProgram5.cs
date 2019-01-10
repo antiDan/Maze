@@ -6,7 +6,7 @@ namespace Maze.RobotPrograms.Test
     {
         public void Program(ILevelInfo robot)
         {
-            while (!robot.IsDownWall())
+            while (!robot.IsBelowWall())
             {
                 robot.GoDown();
             }

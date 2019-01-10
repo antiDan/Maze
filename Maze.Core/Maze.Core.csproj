@@ -46,13 +46,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IGame.cs" />
-    <Compile Include="Interfaces\ILevel.cs" />
     <Compile Include="Interfaces\ILevelInfo.cs" />
     <Compile Include="Interfaces\IProgram.cs" />
     <Compile Include="Interfaces\IRobotControl.cs" />
-    <Compile Include="Interfaces\IWall.cs" />
-    <Compile Include="LevelEditor\Editor.cs" />
     <Compile Include="Objects\Level.cs" />
     <Compile Include="Objects\Wall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,12 +56,14 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="Levels\Level_3_1.lvl" />
+    <None Include="Levels\Level_5_0.lvl" />
     <None Include="Levels\Level_5_2.lvl" />
     <None Include="Levels\Level_5_1.lvl" />
     <None Include="Levels\Level_4.lvl" />
     <None Include="Levels\Level_3_2.lvl" />
     <None Include="Levels\Level_2.lvl" />
     <None Include="Levels\Level_1.lvl" />
+    <None Include="Levels\Level_9.lvl" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

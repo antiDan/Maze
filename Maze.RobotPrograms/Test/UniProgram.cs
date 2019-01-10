@@ -77,9 +77,9 @@ namespace Maze.RobotPrograms.Test
         public int Y { get; }
 
         public bool? IsLeftWall { get; set; }
-        public bool? IsUpWall { get; set; }
+        public bool? IsAboveWall { get; set; }
         public bool? IsRightWall { get; set; }
-        public bool? IsDownWall { get; set; }
+        public bool? IsBelowWall { get; set; }
 
         public Cell Left => this.cells[this.X - 1, this.Y];
         public Cell Top => this.cells[this.X, this.Y - 1];
@@ -93,25 +93,25 @@ namespace Maze.RobotPrograms.Test
                 var count = 0;
 
                 if (this.IsLeftNewMove) count++;
-                if (this.IsTopNewMove) count++;
+                if (this.IsAboveNewMove) count++;
                 if (this.IsRightNewMove) count++;
-                if (this.IsBottomNewMove) count++;
+                if (this.IsBelowNewMove) count++;
 
                 return count;
             }
         }
 
         public bool IsLeftNewMove => this.IsLeftWall == false && this.Left == null;
-        public bool IsTopNewMove => this.IsUpWall == false && this.Top == null;
+        public bool IsAboveNewMove => this.IsAboveWall == false && this.Top == null;
         public bool IsRightNewMove => this.IsRightWall == false && this.Right == null;
-        public bool IsBottomNewMove => this.IsDownWall == false && this.Bottom == null;
+        public bool IsBelowNewMove => this.IsBelowWall == false && this.Bottom == null;
 
         public void CheckWalls()
         {
             this.IsLeftWall = robot.IsLeftWall();
-            this.IsUpWall = robot.IsUpWall();
+            this.IsAboveWall = robot.IsAboveWall();
             this.IsRightWall = robot.IsRightWall();
-            this.IsDownWall = robot.IsDownWall();
+            this.IsBelowWall = robot.IsBelowWall();
         }
 
         public Cell MoveInNewCell()
@@ -122,7 +122,7 @@ namespace Maze.RobotPrograms.Test
                 return new Cell(this.robot, this.cells, this.X - 1, this.Y);
             }
 
-            if (this.IsTopNewMove)
+            if (this.IsAboveNewMove)
             {
                 this.robot.GoUp();
                 return new Cell(this.robot, this.cells, this.X, this.Y - 1);
@@ -134,7 +134,7 @@ namespace Maze.RobotPrograms.Test
                 return new Cell(this.robot, this.cells, this.X + 1, this.Y);
             }
 
-            if (this.IsBottomNewMove)
+            if (this.IsBelowNewMove)
             {
                 this.robot.GoDown();
                 return new Cell(this.robot, this.cells, this.X, this.Y + 1);

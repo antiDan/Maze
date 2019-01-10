@@ -10,16 +10,11 @@ using Newtonsoft.Json;
 
 namespace Maze.Core.Objects
 {
-    public class Level : ILevel, ILevelInfo
+    public class Level : ILevelInfo
     {
-        public Level()
-        {
-
-        }
-
         public int Timeout { get; set; }
 
-        #region ILevel
+        #region Level
 
         public double Width { get; set; }
 
@@ -31,9 +26,9 @@ namespace Maze.Core.Objects
 
         public Point Robot { get; set; }
 
-        #endregion ILevel
+        #endregion Level
 
-        #region IRobotControl
+        #region RobotControl
 
         private bool IsWall(Point point1, Point point2)
         {
@@ -47,7 +42,7 @@ namespace Maze.Core.Objects
                 new Point(this.Robot.X, this.Robot.Y + 1));
         }
 
-        public bool IsUpWall()
+        public bool IsAboveWall()
         {
             return this.IsWall(
                 new Point(this.Robot.X, this.Robot.Y),
@@ -61,7 +56,7 @@ namespace Maze.Core.Objects
                 new Point(this.Robot.X + 1, this.Robot.Y + 1));
         }
 
-        public bool IsDownWall()
+        public bool IsBelowWall()
         {
             return this.IsWall(
                 new Point(this.Robot.X, this.Robot.Y + 1),
@@ -84,7 +79,7 @@ namespace Maze.Core.Objects
         {
             this.Robot -= new Vector(0, 1);
             this.RaiseRobotChanged();
-            if (this.IsDownWall())
+            if (this.IsBelowWall())
             {
                 this.Fail();
             }
@@ -108,7 +103,7 @@ namespace Maze.Core.Objects
         {
             this.Robot += new Vector(0, 1);
             this.RaiseRobotChanged();
-            if (this.IsUpWall())
+            if (this.IsAboveWall())
             {
                 this.Fail();
             }
@@ -145,7 +140,7 @@ namespace Maze.Core.Objects
             this.RobotChanged?.Invoke();
         }
 
-        #endregion IRobotControl
+        #endregion RobotControl
 
         #region Save/Load File
 

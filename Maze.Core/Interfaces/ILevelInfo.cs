@@ -3,8 +3,8 @@
     public interface ILevelInfo : IRobotControl
     {
         bool IsLeftWall();
-        bool IsUpWall();
+        bool IsAboveWall();
         bool IsRightWall();
-        bool IsDownWall();
+        bool IsBelowWall();
     }
 }

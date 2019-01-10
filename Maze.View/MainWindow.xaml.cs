@@ -1,6 +1,4 @@
-﻿using Maze.Core.Objects;
-using Maze.View.Game;
-using System.Collections.Generic;
+﻿using Maze.View.Game;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,8 +10,6 @@ namespace Maze.View
         {
             InitializeComponent();
 
-            //this.CreateLevel();
-
             this.Content = this.CreateGameView();
         }
 
@@ -23,24 +19,6 @@ namespace Maze.View
             var view = new GameView();
             view.DataContext = viewModel;
             return view;
-        }
-
-        private void CreateLevel()
-        {
-            var level = new Level
-            {
-                Width = 3,
-                Height = 1,
-                Walls = new List<Wall>(),
-                Exit = new Wall
-                (
-                    new Point(3, 0),
-                    new Point(3, 1)
-                ),
-                Robot = new Point(0, 0)
-            };
-
-            level.SaveToFile();
         }
     }
 }

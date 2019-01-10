@@ -17,7 +17,7 @@ namespace Maze.View.Game
         {
             this.IsEditorActive = isEditorActive;
             this.level = level;
-            this.level.RobotChanged += OnRobotChanged;
+            this.level.RobotChanged += this.OnRobotChanged;
 
             this.ToggleWallCommand = new DelegateCommand<Wall>(this.ToggleWall, this.CanExecuteToggleWall);
             this.CreateLevelCommand = new DelegateCommand(this.CreateNewLevel);
