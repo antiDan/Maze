@@ -155,10 +155,11 @@ namespace Maze.View.Game
             var path = AppDomain.CurrentDomain.BaseDirectory;
             var directoryInfo = Directory.GetParent(path);
 
-            while (directoryInfo.Name != "Maze")
+            while (directoryInfo.Name != "Maze.View")
             {
                 directoryInfo = directoryInfo.Parent;
             }
+            directoryInfo = directoryInfo.Parent;
 
             return Path.Combine(directoryInfo.FullName, @"Maze.RobotPrograms\bin\Debug\Maze.RobotPrograms.dll");
         }
